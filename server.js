@@ -12,7 +12,13 @@ const PORT = process.env.PORT || 3000;
  
 app.use(express.json());
  
-app.use('/api/notes', bookmarkRoutes);
+// frontend (oAuth login page)
+app.get('/', (req, res) => res.send('<a href="/api/users/auth/github"><button>Login with GitHub</button></a>'))
+ 
+// frontend (oAuth success page)
+app.get('/success', (req, res) => res.send('<h1>Success!</h1><a href="/">Back</a>'))
+
+app.use('/api/bookmarks', bookmarkRoutes);
 app.use('/api/users', userRoutes);
  
 app.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));

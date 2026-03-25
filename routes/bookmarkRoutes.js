@@ -1,6 +1,6 @@
 import express from 'express'
 import Bookmark from '../models/Bookmark.js'
-import { authMiddleware } from '../middleware/auth.js'
+import { authMiddleware } from '../utils/auth.js'
 
 const router = express.Router()
  
@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
 });
 
 // GET /api/bookmarks/:id - Get a bookmark for the logged-in user
-router.get('/', async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
     const bookmark = await Bookmark.findById(req.params.id);
     if (!bookmark) {
