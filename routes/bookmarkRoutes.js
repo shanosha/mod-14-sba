@@ -57,8 +57,8 @@ router.put('/:id', async (req, res) => {
     if (bookmark.user.toString() !== req.user._id.toString()) {
       return res.status(403).json({ message: 'User not authorized to update this bookmark' });
     }
-    const updatedNote = await Bookmark.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
-    res.json(updatedNote);
+    const updatedBookmark = await Bookmark.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
+    res.json(updatedBookmark);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -75,8 +75,8 @@ router.delete('/:id', async (req, res) => {
     if (bookmark.user.toString() !== req.user._id.toString()) {
       return res.status(403).json({ message: 'User not authorized to delete this bookmark' });
     }
-    const deletedNote = await Bookmark.findByIdAndDelete(req.params.id);
-    res.json({ message: 'Note deleted!' });
+    const deletedBookmark = await Bookmark.findByIdAndDelete(req.params.id);
+    res.json({ message: 'Bookmark deleted!' });
   } catch (err) {
     res.status(500).json(err);
   }
