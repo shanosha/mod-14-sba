@@ -24,7 +24,8 @@ const userSchema = new Schema({
   },
   githubId: {
     type: String,
-    unique: true
+    unique: true,
+    sparse: true
   }
 });
 
