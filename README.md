@@ -35,6 +35,8 @@
 
 ## Testing the Database Connection on the Server
 Use a tool like Postman or Thunder Client. Here the three endpoints on this server:
+- **oAuth:** GET /
+  - This app supports oAuth and allows a user to create an account or login with GitHub. To use oAuth, open the "/" directory in a web browser, then click the button to login with GitHub.
 - **Create User:** POST /api/users/register
   - Creates a new user account using the data in req.body.
   - Required properties: username, email, password
